@@ -9,7 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Rebuild folder structure
-        run: | python3 - <<'PY' import os, shutil for f in os.listdir('.'): if '__' in f and os.path.isfile(f): d = f.replace('__', '/') os.makedirs(os.path.dirname(d), exist_ok=True) shutil.move(f, d) PY       - uses: actions/setup-java@v4
+        run: bash restructure.sh
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
